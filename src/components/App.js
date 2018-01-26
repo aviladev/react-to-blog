@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+
+import PostsIndex from './PostsIndex'
 
 class App extends Component {
   render() {
     return (
-      <h1>React To Blog</h1>
+      <Router>
+        <Switch>
+          <Route path="/" component={PostsIndex} />
+        </Switch>
+      </Router>
     )
   }
 }
