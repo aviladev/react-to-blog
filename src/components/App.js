@@ -5,7 +5,7 @@ import {
   Switch
 } from 'react-router-dom'
 
-import PostsIndex from './PostsIndex'
+import PostsIndex from '../containers/PostsIndex'
 
 class App extends Component {
   render() {
