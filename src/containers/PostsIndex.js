@@ -9,16 +9,17 @@ class PostsIndex extends Component {
     this.props.fetchPosts()
   }
 
-  renderPosts = () => _.map(
-    this.props.posts,
-    post => <li key={post.id}>{post.title}</li>
+  renderPosts = () => _.map(this.props.posts, post =>
+    <li className="list-group-item" key={post.id}>
+      {post.title}
+    </li>
   )
   
   render () {
     return (
-      <div>
-        <h3>Posts</h3>
-        <ul>
+      <div className="container">
+        <h3 className="mt-2">Posts</h3>
+        <ul className="list-group list-group-flush">
           {this.renderPosts()}
         </ul>
       </div>
