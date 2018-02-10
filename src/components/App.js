@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 import PostsIndex from '../containers/PostsIndex'
-import PostsNew from './PostsNew'
+import PostsNew from '../containers/PostsNew'
 
 class App extends Component {
   render() {
