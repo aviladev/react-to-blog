@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { fetchPost } from '../actions'
+import { fetchPost, deletePost } from '../actions'
 
 class PostsShow extends Component {
   componentDidMount () {
@@ -10,6 +10,13 @@ class PostsShow extends Component {
     this.props.fetchPost(id)
   }
   
+  onDeleteClick = () => {
+    const { id } = this.props.match.params
+    this.props.deletePost(id, () =>
+      this.props.history.push('/')
+    )
+  }
+
   render () {
     const { post } = this.props
     
@@ -20,11 +27,17 @@ class PostsShow extends Component {
     const { title, categories, content } = post
 
     return (
-      <div>
+      <div class="container pt-2">
         <Link to="/">Back to Index</Link>
-        <h3>{title}</h3>
+        <button
+          className="btn btn-danger float-sm-right"
+          onClick={this.onDeleteClick}
+        >
+          Delete Post
+        </button>
+        <h3 className="mt-4">{title}</h3>
         <h6>Categories: {categories}</h6>
-        <p>{content}</p>
+        <p className="mt-4" >{content}</p>
       </div>
     )
   }
@@ -34,5 +47,5 @@ const mapStateToProps = ({ posts }, ownProps) =>
   ({ post: posts[ownProps.match.params.id] })
 
 export default connect(
-  mapStateToProps, { fetchPost }
+  mapStateToProps, { fetchPost, deletePost }
 )(PostsShow)
